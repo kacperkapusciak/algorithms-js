@@ -58,6 +58,17 @@ class SinglyLinkedList {
     if (this.length == 0) this.tail = null;
     return temp;
   }
+
+  unshift(value) {
+    let newNode = new Node(value);
+    if (!this.head) {
+      this.head = this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -66,8 +77,5 @@ list.push(1);
 list.push(2);
 list.push(3);
 
-console.log(list.shift().value);
-console.log(list.shift().value);
-console.log(list.shift().value);
-console.log(list.shift());
-console.log(list);
+list.unshift(0);
+list.print();

@@ -33,7 +33,7 @@ class SinglyLinkedList {
 
   pop() {
     if (!this.head) return undefined;
-    
+
     let current = this.head;
     let newTail = this.head;
     while (current.next) {
@@ -44,10 +44,19 @@ class SinglyLinkedList {
     this.tail.next = null;
     this.length--;
 
-    if (this.length == 0) 
-      this.head = this.tail = null;
-    
+    if (this.length == 0) this.head = this.tail = null;
+
     return current;
+  }
+
+  shift() {
+    if (!this.head) return undefined;
+    let temp = this.head;
+    this.head = this.head.next;
+    this.length--;
+
+    if (this.length == 0) this.tail = null;
+    return temp;
   }
 }
 
@@ -57,8 +66,8 @@ list.push(1);
 list.push(2);
 list.push(3);
 
-console.log(list.pop().value);
-console.log(list.pop().value);
-console.log(list.pop().value);
-console.log(list.pop());
-
+console.log(list.shift().value);
+console.log(list.shift().value);
+console.log(list.shift().value);
+console.log(list.shift());
+console.log(list);

@@ -69,13 +69,24 @@ class SinglyLinkedList {
     }
     this.length++;
   }
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+
+    let current = this.head; 
+    for (let counter = 0; index !== counter; counter++) {
+      current = current.next;
+    }
+    return current;
+  }
 }
 
 let list = new SinglyLinkedList();
 
-list.push(1);
-list.push(2);
-list.push(3);
+list.push("Hi");
+list.push("it's");
+list.push("me!");
 
-list.unshift(0);
+list.unshift("Hello");
 list.print();
+
+console.log(list.get(1).value);

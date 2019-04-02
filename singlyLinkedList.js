@@ -22,6 +22,14 @@ class SinglyLinkedList {
     }
     this.length++;
   }
+
+  print() {
+    let current = this.head;
+    while (current){
+      console.log(current.value);
+      current = current.next;
+    }
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -30,5 +38,5 @@ list.push(1);
 list.push(2);
 list.push(3);
 
-console.log("Head: ", list.head.value);
-console.log("Tail: ", list.tail.value);
+list.print();
+

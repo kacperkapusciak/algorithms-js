@@ -78,6 +78,14 @@ class SinglyLinkedList {
     }
     return current;
   }
+  set(index, value) {
+    let found = this.get(index);
+    if (found) {
+      found.value = value;
+      return true;
+    }
+    return false;
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -89,4 +97,6 @@ list.push("me!");
 list.unshift("Hello");
 list.print();
 
+console.log(list.get(1).value);
+list.set(1, "Hiiiiiiiiiii");
 console.log(list.get(1).value);

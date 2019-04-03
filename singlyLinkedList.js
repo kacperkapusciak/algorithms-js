@@ -13,7 +13,7 @@ class SinglyLinkedList {
   }
 
   push(value) {
-    let newNode = new Node(value);
+    const newNode = new Node(value);
     if (!this.head) {
       this.head = this.tail = newNode;
     } else {
@@ -52,7 +52,7 @@ class SinglyLinkedList {
 
   shift() {
     if (!this.head) return undefined;
-    let temp = this.head;
+    const temp = this.head;
     this.head = this.head.next;
     this.length--;
 
@@ -61,7 +61,7 @@ class SinglyLinkedList {
   }
 
   unshift(value) {
-    let newNode = new Node(value);
+    const newNode = new Node(value);
     if (!this.head) {
       this.head = this.tail = newNode;
     } else {
@@ -71,6 +71,7 @@ class SinglyLinkedList {
     this.length++;
     return true;
   }
+
   get(index) {
     if (index < 0 || index >= this.length) return null;
 
@@ -80,8 +81,9 @@ class SinglyLinkedList {
     }
     return current;
   }
+
   set(index, value) {
-    let found = this.get(index);
+    const found = this.get(index);
     if (found) {
       found.value = value;
       return true;
@@ -94,8 +96,8 @@ class SinglyLinkedList {
     if (index === this.length) return this.push(value);
     if (index === 0) return this.unshift(value);
 
-    let newNode = new Node(value);
-    let prev = this.get(index - 1);
+    const newNode = new Node(value);
+    const prev = this.get(index - 1);
     // let temp = prev.next;
     // prev.next = newNode;
     // newNode.next = temp;
@@ -109,8 +111,8 @@ class SinglyLinkedList {
     if (index === this.length - 1) return this.pop();
     if (index === 0) return this.shift();
 
-    let prev = this.get(index - 1);
-    let removed = prev.next;
+    const prev = this.get(index - 1);
+    const removed = prev.next;
     prev.next = removed.next;
     this.length--;
     return removed;
@@ -135,7 +137,11 @@ let list = new SinglyLinkedList();
 list.push("Hi");
 list.push("it's");
 list.push("me!");
+list.pop();
+list.shift();
+list.unshift("me!!");
 list.print();
+list.insert(1, "Hello");
 console.log("////////////////")
 list.reverse();
 list.print();

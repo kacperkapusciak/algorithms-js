@@ -21,6 +21,7 @@ class SinglyLinkedList {
       this.tail = newNode;
     }
     this.length++;
+    return true;
   }
 
   print() {
@@ -68,11 +69,12 @@ class SinglyLinkedList {
       this.head = newNode;
     }
     this.length++;
+    return true;
   }
   get(index) {
     if (index < 0 || index >= this.length) return null;
 
-    let current = this.head; 
+    let current = this.head;
     for (let counter = 0; index !== counter; counter++) {
       current = current.next;
     }
@@ -86,6 +88,21 @@ class SinglyLinkedList {
     }
     return false;
   }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return this.push(value);
+    if (index === 0) return this.unshift(value);
+
+    let newNode = new Node(value);
+    let prev = this.get(index - 1);
+    // let temp = prev.next;
+    // prev.next = newNode;
+    // newNode.next = temp;
+    [prev.next, newNode.next] = [newNode, prev.next]; //tricky but shorter and it works!
+    this.length++;
+    return true;
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -93,10 +110,8 @@ let list = new SinglyLinkedList();
 list.push("Hi");
 list.push("it's");
 list.push("me!");
-
-list.unshift("Hello");
 list.print();
-
-console.log(list.get(1).value);
-list.set(1, "Hiiiiiiiiiii");
-console.log(list.get(1).value);
+console.log("////////////////")
+list.insert(0, "One");
+list.insert(3, "in");
+list.print();

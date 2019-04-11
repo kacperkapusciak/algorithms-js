@@ -32,13 +32,30 @@ class DoublyLinkedList {
       current = current.next;
     }
   }
+
+  pop() {
+    if (this.head === null) return undefined;
+    const temp = this.tail;
+    if (this.length === 1) {
+      this.head = this.tail = null;
+    } else {
+      this.tail = temp.prev;
+      this.tail.next = null;
+      temp.prev = null;
+    }
+    this.length--;
+    return temp.value;
+  }
 }
 
 let list = new DoublyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-
 list.print();
+console.log(list.pop());
+console.log(list.pop());
+console.log(list.pop());
+console.log(list.pop());
 
 

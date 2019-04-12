@@ -99,9 +99,9 @@ class DoublyLinkedList {
 
   insert(index, value) {
     if (index < 0 || index > this.length) return false;
-    if (index === 0) return this.unshift(value);
-    if (index === this.length) return this.push(value);
-    
+    if (index === 0) return !!this.unshift(value);
+    if (index === this.length) return !!this.push(value);
+
     const newNode = new Node(value);
     const before = this.get(index - 1);
     const after = before.next;
@@ -113,16 +113,32 @@ class DoublyLinkedList {
     this.length++;
     return true;
   }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    const removed = this.get(index);
+    const before = removed.prev;
+    const after = removed.next;
+    
+    before.next = after;
+    after.prev = before;
+    removed.next = removed.prev = null;
+    this.length--;
+    return removed;
+  }
+
 }
 
 let list = new DoublyLinkedList();
-list.unshift(10);
-list.unshift(20);
-list.unshift(30);
-list.push(40);
-list.push(50);
-list.insert(2, 2000);
+list.push(10)
+list.push(20);
+list.push(30);
 list.print();
 console.log("---");
 console.log(list.length);
-console.log(list.get(4).value);
+console.log(list.remove(1).value);
+console.log("---");
+list.print();

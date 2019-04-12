@@ -78,14 +78,23 @@ class DoublyLinkedList {
     let current;
     if (index <= this.length / 2) {
       current = this.head;
-      for (let counter = 0; counter !== index; counter++) 
+      for (let counter = 0; counter !== index; counter++)
         current = current.next;
     } else {
       current = this.tail;
       for (let counter = this.length - 1; counter !== index; counter--)
         current = current.prev;
-      }
-      return current.value;
+    }
+    return current;
+  }
+
+  set(index, value) {
+    const found = this.get(index);
+    if (found) {
+      found.value = value;
+      return true;
+    }
+    return false;
   }
 }
 
@@ -95,7 +104,9 @@ list.unshift(20);
 list.unshift(30);
 list.push(40);
 list.push(50);
+list.set(2, 2000);
 list.print();
-console.log("---")
+
+console.log("---");
 console.log(list.length);
-console.log(list.get(4));
+console.log(list.get(4).value);

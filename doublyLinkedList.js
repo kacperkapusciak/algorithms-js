@@ -72,10 +72,30 @@ class DoublyLinkedList {
     }
     this.length++;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let current;
+    if (index <= this.length / 2) {
+      current = this.head;
+      for (let counter = 0; counter !== index; counter++) 
+        current = current.next;
+    } else {
+      current = this.tail;
+      for (let counter = this.length - 1; counter !== index; counter--)
+        current = current.prev;
+      }
+      return current.value;
+  }
 }
 
 let list = new DoublyLinkedList();
-list.unshift(1);
-list.unshift(2);
-list.unshift(3);
+list.unshift(10);
+list.unshift(20);
+list.unshift(30);
+list.push(40);
+list.push(50);
 list.print();
+console.log("---")
+console.log(list.length);
+console.log(list.get(4));

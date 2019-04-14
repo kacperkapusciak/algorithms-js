@@ -49,6 +49,6 @@ stack.push(234);
 stack.push(345);
 stack.print();
 console.log("---")
-console.log(stack.pop().value);
-console.log(stack.pop().value);
-console.log(stack.pop().value);
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());

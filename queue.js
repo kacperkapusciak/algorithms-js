@@ -5,32 +5,32 @@ class Node {
   }
 }
 
-class Stack {
+class Queue {
   constructor() {
     this.first = null;
     this.last = null;
     this.size = 0;
   }
 
-  push(value) {
+  enqueue(value) {
     const newNode = new Node(value);
-    if (!this.first) {
+    if (!this.head) {
       this.first = this.last = newNode;
     } else {
-      newNode.next = this.first;
-      this.first = newNode;
+      this.last.next = newNode;
+      this.last = newNode;
     }
     this.size++;
     return this.size;
   }
 
-  pop() {
+  dequeue() {
     if (!this.first) return null;
-    const temp = this.first; 
+    const temp = this.first;
     this.first = this.first.next;
     this.size--;
 
-    if (this.size == 0) this.last = null;
+    if (this.length == 0) this.tail = null;
     return temp.value;
   }
 
@@ -43,12 +43,11 @@ class Stack {
   }
 }
 
-const stack = new Stack();
-stack.push(123);
-stack.push(234);
-stack.push(345);
-stack.print();
-console.log("---")
-console.log(stack.pop().value);
-console.log(stack.pop().value);
-console.log(stack.pop().value);
+const queue = new Queue();
+queue.enqueue("123");
+queue.enqueue("234");
+queue.enqueue("345");
+queue.print();
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());

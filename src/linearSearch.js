@@ -9,5 +9,4 @@ const linearSearch = (arr, value) => {
   return -1;
 }
 
-const result = linearSearch([6,7,82,3,41,5,9,10], 5);
-console.log(result);
+module.exports = linearSearch;

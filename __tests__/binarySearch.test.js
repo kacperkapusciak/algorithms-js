@@ -1,4 +1,4 @@
-const binarySearch = require("../binarySearch");
+const binarySearch = require("../src/binarySearch");
 
 describe("Binary search", () => {
   it("should return index of found element", () => {

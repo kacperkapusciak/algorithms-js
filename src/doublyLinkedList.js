@@ -132,13 +132,4 @@ class DoublyLinkedList {
 
 }
 
-let list = new DoublyLinkedList();
-list.push(10)
-list.push(20);
-list.push(30);
-list.print();
-console.log("---");
-console.log(list.length);
-console.log(list.remove(1).value);
-console.log("---");
-list.print();
+module.exports = DoublyLinkedList;

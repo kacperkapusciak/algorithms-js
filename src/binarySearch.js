@@ -22,7 +22,4 @@ const binarySearch = (arr, elem) => {
   return arr[middle] === elem ? middle : -1;
 }
 
-const result = binarySearch([2,3,4,5,6,7,8,9,10], 8);
-
-console.log(result);
-
+module.exports = binarySearch;

@@ -5,32 +5,34 @@ class Node {
   }
 }
 
-class Stack {
+class Queue {
   constructor() {
     this.first = null;
     this.last = null;
     this.size = 0;
   }
 
-  push(value) {
+  enqueue(value) {
     const newNode = new Node(value);
     if (!this.first) {
       this.first = this.last = newNode;
     } else {
-      newNode.next = this.first;
-      this.first = newNode;
+      this.last.next = newNode;
+      this.last = newNode;
     }
     this.size++;
     return this.size;
   }
 
-  pop() {
+  dequeue() {
     if (!this.first) return null;
-    const temp = this.first; 
+
+    const temp = this.first;
+    if (this.first === this.last) this.last = null;
+
     this.first = this.first.next;
     this.size--;
 
-    if (this.size == 0) this.last = null;
     return temp.value;
   }
 
@@ -43,12 +45,4 @@ class Stack {
   }
 }
 
-const stack = new Stack();
-stack.push(123);
-stack.push(234);
-stack.push(345);
-stack.print();
-console.log("---")
-console.log(stack.pop());
-console.log(stack.pop());
-console.log(stack.pop());
+module.exports = Queue;

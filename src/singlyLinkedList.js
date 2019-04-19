@@ -132,16 +132,7 @@ class SinglyLinkedList {
   }
 }
 
-let list = new SinglyLinkedList();
-
-list.push("Hi");
-list.push("it's");
-list.push("me!");
-list.pop();
-list.shift();
-list.unshift("me!!");
-list.print();
-list.insert(1, "Hello");
-console.log("////////////////")
-list.reverse();
-list.print();
+module.exports = {
+  Node,
+  SinglyLinkedList
+};

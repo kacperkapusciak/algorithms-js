@@ -9,6 +9,4 @@ const naiveStringSearch = (string, pattern) => {
   return count;
 };
 
-const result = naiveStringSearch("qwertyuiopasdfghjklasdf", "asdf");
-
-console.log(result);
+module.exports = naiveStringSearch;

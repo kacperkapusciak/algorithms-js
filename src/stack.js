@@ -43,12 +43,4 @@ class Stack {
   }
 }
 
-const stack = new Stack();
-stack.push(123);
-stack.push(234);
-stack.push(345);
-stack.print();
-console.log("---")
-console.log(stack.pop());
-console.log(stack.pop());
-console.log(stack.pop());
+module.exports = Stack;

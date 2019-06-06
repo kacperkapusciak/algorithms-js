@@ -14,6 +14,7 @@ describe("Binary Search Tree", () => {
   beforeEach(() => {
     tree = new BinarySearchTree();
   });
+
   describe("Insert", () => {
     test("added node on empty tree should be the only node in the tree", () => {
       expect(tree.root).toBeNull();
@@ -60,5 +61,30 @@ describe("Binary Search Tree", () => {
       expect(tree.root.left).toBeNull();
       expect(tree.root.right).toBeNull();
     });
+  });
+
+  describe("Find", () => {
+    it("should return false when tree is empty", () => {
+      const result = tree.find(1);
+      expect(result).toBeFalsy();
+    });
+
+    beforeEach(() => {
+      tree.insert(10);
+      tree.insert(7);
+      tree.insert(5);
+      tree.insert(12);
+      tree.insert(17);
+    });
+
+    it("should return the node when found", () => {
+      const result = tree.find(12);
+      expect(result.value).toBe(12);
+    });
+
+    it("should return false when node is not found", () => {
+      const result = tree.find(8000);
+      expect(result).toBeFalsy();
+    })
   });
 });
